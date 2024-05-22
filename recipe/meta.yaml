@@ -13,13 +13,14 @@ build:
   entry_points:
     - pup = puppies.__main__:main
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
   skip: true  # [win]
   skip: true  # [py<36]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - numpy
     - pip
@@ -30,7 +31,6 @@ requirements:
     - mc3 >=3.0.6
     - python
     - scipy >=1.4.1
-    - {{ pin_compatible('numpy') }}
 
 test:
   imports:
